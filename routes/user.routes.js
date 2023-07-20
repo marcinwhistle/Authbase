@@ -2,8 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/logged', (req, res) => {
+  // console.log(req.user);
   if (req.user) {
-    res.render('logged');
+    res.render('logged', {
+      username: req.user.displayName,
+      avatar: req.user.photos[0].value,
+    });
   } else res.redirect('/user/no-permission');
 });
 
