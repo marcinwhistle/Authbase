@@ -15,4 +15,11 @@ router.get(
   }
 );
 
+router.post('/auth.logout', function (req, res, next) {
+  req.logout(function (err) {
+    if (err) return next(err);
+    res.redirect('/user/logout');
+  });
+});
+
 module.exports = router;

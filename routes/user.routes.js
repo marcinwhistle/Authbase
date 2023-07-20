@@ -7,6 +7,12 @@ router.get('/logged', (req, res) => {
   } else res.redirect('/user/no-permission');
 });
 
+router.get('/logout', (req, res) => {
+  if (req.user) {
+    res.render('logout');
+  } else res.redirect('/user/no-permission');
+});
+
 router.get('/no-permission', (req, res) => {
   res.render('noPermission');
 });
@@ -21,11 +27,6 @@ router.get('/profile/profileSettings', (req, res) => {
   if (req.user) {
     res.render('profileSettings');
   } else res.redirect('/user/no-permission');
-});
-
-router.get('/auth.logout', (req, res) => {
-  req.logout();
-  res.redirect('/user/logged');
 });
 
 module.exports = router;
